@@ -9,48 +9,96 @@
 #include "lcddraw.h"
 
 extern int eyes_state;
+extern int boat;
+extern int piano;
+extern int album;
+extern int christmas;
+extern int mc;
+
 
 void state_advance(int state){
 
   switch(state){
   case 1:
+    clearMain();
+    piano = 1;
     drawOpenEyes();
-    fillRectangle(10, 140, screenWidth, 10, COLOR_WHITE);
-    fillRectangle(10, 0, screenWidth, 23, COLOR_WHITE);
+    drawPiano();
     /*-------------------------*/
     turn_green();
     __delay_cycles(50000);
     red_on();
     __delay_cycles(5000);
-    //ode_to_joy();
+    ode_to_joy();
     turn_both_off();
     __delay_cycles(5000);
+    clearMain();
+    restoreMain();
+    piano = 0;
     break;
   case 2:
     // flashes both leds
-    //flash_both(30);
-    
-    jingle_bells();
-    turn_both_off();
+    clearMain();
+    boat = 1;
+    drawOpenEyes();
+    drawString5x7(16,10, "Row your boat!!!", BLACK, COLOR_WHITE);
+    drawBoat();
+    turn_green();
+    __delay_cycles(50000);
+    red_on();
     __delay_cycles(5000);
-    break;
-  case 3:
-    //flashes red led
-    turn_red();
     row_your_boat();
     turn_both_off();
     __delay_cycles(5000);
+    boat = 0;
+    break;
+  case 3:
+    clearMain();
+    mc = 1;
+    drawOpenEyes();
+    drawMc();
+    turn_red();
+    __delay_cycles(5000);
+    red_on();
+    __delay_cycles(5000);
+    old_mc_donald();
+    turn_both_off();
+    __delay_cycles(5000);
+    clearMain();
+    restoreMain();
+    mc = 0;
     break;
   case 4:
-    // no leds
-    runaway();
+    clearMain();
+    run = 1;
+    drawOpenEyes();
+    drawRunaway();
+    turn_green();
     __delay_cycles(5000);
+    red_on();
+    __delay_cycles(5000);
+    runaway();
+    turn_both_off();
+    __delay_cycles(5000);
+    clearMain();
+    restoreMain();
+    run = 0;
     break;
   case 5:
-    // flashes green then red then no leds
-    flash_green_red();
-    twinkle_twinkle();
+    clearMain();
+    christmas = 1;
+    drawOpenEyes();
+    twinkle();
+    turn_green();
+    __delay_cycles(50000);
+    red_on();
     __delay_cycles(5000);
+    row_your_boat();
+    turn_both_off();
+    __delay_cycles(5000);
+    clearMain();
+    restoreMain();
+    christmas = 0;
     break;
   default:
     green_on();
