@@ -194,6 +194,7 @@ void drawRunaway(){
   fillRectangle(0,0,0,0, COLOR_WHITE);
 }
 
-void drawMc(){
+/*void drawMc(){
   fillRectangle(50, 133, 30, 30, COLOR_RED);
 }
+*/

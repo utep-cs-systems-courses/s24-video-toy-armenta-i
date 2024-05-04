@@ -56,12 +56,13 @@ void state_advance(int state){
     clearMain();
     mc = 1;
     drawOpenEyes();
+    drawString5x7(16,10, "Spot the dot", BLACK, COLOR_WHITE);
     drawMc();
     turn_red();
     __delay_cycles(5000);
     red_on();
     __delay_cycles(5000);
-    old_mc_donald();
+    //old_mc_donald();
     turn_both_off();
     __delay_cycles(5000);
     clearMain();
@@ -93,8 +94,8 @@ void state_advance(int state){
     __delay_cycles(50000);
     red_on();
     __delay_cycles(5000);
-    row_your_boat();
-    turn_both_off();
+    jingle_bells();
+     turn_both_off();
     __delay_cycles(5000);
     clearMain();
     restoreMain();
